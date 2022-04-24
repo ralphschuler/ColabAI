@@ -1,15 +1,17 @@
+// eslint-disable-next-line import/no-unresolved
+import * as sourceMap from "./main.js.map";
 import { SourceMapConsumer } from "source-map";
 
 export class ErrorMapper {
   // Cache consumer
-  private static _consumer?: SourceMapConsumer;
+  private static _onsumer?: SourceMapConsumer;
 
   public static get consumer(): SourceMapConsumer {
-    if (this._consumer == null) {
-      this._consumer = new SourceMapConsumer(require("main.js.map"));
+    if (this.consumer == null) {
+      this.consumer = new SourceMapConsumer(sourceMap);
     }
 
-    return this._consumer;
+    return this.consumer;
   }
 
   // Cache previously mapped traces to improve performance
