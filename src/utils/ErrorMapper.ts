@@ -2,15 +2,15 @@ import { SourceMapConsumer } from "source-map";
 
 export class ErrorMapper {
   // Cache consumer
-  private static _onsumer?: SourceMapConsumer;
+  private static cacheConsumer?: SourceMapConsumer;
 
   public static get consumer(): SourceMapConsumer {
-    if (this.consumer == null) {
+    if (this.cacheConsumer == null) {
       // eslint-disable-next-line import/no-unresolved
-      this.consumer = new SourceMapConsumer(import("./main.js.map"));
+      this.cacheConsumer = new SourceMapConsumer(import("./main.js.map"));
     }
 
-    return this.consumer;
+    return this.cacheConsumer;
   }
 
   // Cache previously mapped traces to improve performance
