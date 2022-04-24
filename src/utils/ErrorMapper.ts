@@ -6,8 +6,8 @@ export class ErrorMapper {
 
   public static get consumer(): SourceMapConsumer {
     if (this.cacheConsumer == null) {
-      // eslint-disable-next-line import/no-unresolved
-      this.cacheConsumer = new SourceMapConsumer(import("./main.js.map"));
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      this.cacheConsumer = new SourceMapConsumer(require("./main.js.map"));
     }
 
     return this.cacheConsumer;
