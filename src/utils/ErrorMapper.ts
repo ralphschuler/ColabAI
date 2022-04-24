@@ -7,7 +7,7 @@ export class ErrorMapper {
   public static get consumer(): SourceMapConsumer {
     if (this.cacheConsumer == null) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
-      const sourceMap = require("main.js.map");
+      const sourceMap = require("index.map.js");
       this.cacheConsumer = new SourceMapConsumer(sourceMap);
     }
 
