@@ -6,15 +6,9 @@ export class ErrorMapper {
 
   public static get consumer(): SourceMapConsumer {
     if (this.cacheConsumer == null) {
-      // eslint-disable-next-line import/no-unresolved
-      import("./main.js.map")
-        .then(result => {
-          this.cacheConsumer = new SourceMapConsumer(result);
-        })
-        .catch((error: Error) => {
-          console.log(`Failed to load source map: ${error.message}`);
-        });
-      this.cacheConsumer = new SourceMapConsumer();
+      // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
+      const sourceMap = require("main.js.map");
+      this.cacheConsumer = new SourceMapConsumer(sourceMap);
     }
 
     return this.cacheConsumer;
