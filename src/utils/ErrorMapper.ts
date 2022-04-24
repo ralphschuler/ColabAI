@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
-import * as sourceMap from "./main.js.map";
 import { SourceMapConsumer } from "source-map";
 
 export class ErrorMapper {
@@ -8,7 +6,8 @@ export class ErrorMapper {
 
   public static get consumer(): SourceMapConsumer {
     if (this.consumer == null) {
-      this.consumer = new SourceMapConsumer(sourceMap);
+      // eslint-disable-next-line import/no-unresolved
+      this.consumer = new SourceMapConsumer(import("./main.js.map"));
     }
 
     return this.consumer;
