@@ -1,4 +1,5 @@
 import { TaskAction } from "../Task/Action";
+import { TaskContext } from "../Task/Context";
 
 export class CreepMoveAction extends TaskAction {
   private position: RoomPosition;
@@ -11,11 +12,11 @@ export class CreepMoveAction extends TaskAction {
   }
 
   public Execute(context: TaskContext): boolean {
-    const creep: Creep = context.Get<Creep>("creep") as Creep;
+    const creep: Creep = context.Get<Creep>("creep");
     const result = creep.moveTo(this.position);
-    if ([ERR_NO_PATH, ERR_NOT_OWNER, ERR_NO_BODYPART, ERR_INVALID_TARGET].includes(result)) {
+    if ([ERR_NO_PATH, ERR_NOT_OWNER, ERR_NO_BODYPART, ERR_INVALID_TARGET].find(r => r === result) !== undefined) {
       throw new Error(`CreepMoveAction.Execute: ${result}`);
     }
-    return creep.pos.isInRangeTo(this.position, this.distance);
+    return creep.pos.inRangeTo(this.position, this.distance);
   }
 }
