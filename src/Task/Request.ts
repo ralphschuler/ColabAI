@@ -1,5 +1,5 @@
-import { TaskAction } from "Types/TaskAction";
-import { TaskContext } from "Types/TaskContext";
+import { TaskAction } from "./Action";
+import { TaskContext } from "./Context";
 
 export enum TaskRequestStatus {
   Pending = "Pending",
