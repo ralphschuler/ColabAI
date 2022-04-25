@@ -84,5 +84,6 @@ module.exports = {
     radix: "error",
     "sort-imports": "warn",
     "spaced-comment": "error",
+    "quotes": "off",
   }
 };
