@@ -7,14 +7,16 @@ export enum TaskActionStatus {
 }
 export class TaskAction {
   private status: TaskActionStatus;
+  public context: TaskContext;
   private preTasks: TaskAction[];
 
-  public constructor(preTasks: TaskAction[]) {
-    this.preTasks = preTasks;
+  public constructor(context: TaskContext) {
+    this.context = context;
+    this.preTasks = [];
     this.status = TaskActionStatus.Pending;
   }
 
-  protected Execute(context: TaskContext): boolean {
+  protected Execute(): boolean {
     throw new Error("Method not implemented.");
   }
 
@@ -22,16 +24,24 @@ export class TaskAction {
     return this.status;
   }
 
-  public Invoke(context: TaskContext): TaskActionStatus {
+  public get PreTasks(): TaskAction[] {
+    return this.preTasks;
+  }
+
+  public set PreTasks(preTasks: TaskAction[]) {
+    this.preTasks = preTasks;
+  }
+
+  public Invoke(): TaskActionStatus {
     for (const preTask of this.preTasks) {
-      preTask.Invoke(context);
+      preTask.Invoke();
       if (preTask.Status === TaskActionStatus.Failure) {
         return (this.status = TaskActionStatus.Failure);
       }
     }
 
     try {
-      return (this.status = this.Execute(context) ? TaskActionStatus.Pending : TaskActionStatus.Running);
+      return (this.status = this.Execute() ? TaskActionStatus.Pending : TaskActionStatus.Running);
     } catch (e) {
       console.error(e);
       return (this.status = TaskActionStatus.Failure);

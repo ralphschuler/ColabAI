@@ -1,6 +1,5 @@
 import { ErrorMapper } from "./Utils/ErrorMapper";
-import { BuilderRole } from "./Roles/BuilderRole";
-import { HarvesterRole } from "./Roles/HarvesterRole";
+import { BuilderRole, HarvesterRole, UpgraderRole } from "./Roles";
 
 declare global {
   /*
@@ -42,15 +41,24 @@ export const loop = ErrorMapper.wrapLoop(() => {
       delete Memory.creeps[name];
     } else {
       const memory = Memory.creeps[name];
+      let role;
       switch (memory.role) {
         case "builder":
-          new BuilderRole(Game.creeps[name]);
+          role = new BuilderRole(Game.creeps[name]);
           break;
 
         case "harvester":
-          new HarvesterRole(Game.creeps[name]);
+          role = new HarvesterRole(Game.creeps[name]);
+          break;
+
+        case "upgrader":
+          role = new UpgraderRole(Game.creeps[name]);
           break;
       }
+      if (!role) {
+        continue;
+      }
+      role.Invoke();
     }
   }
 });
