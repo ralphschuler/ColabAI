@@ -3,18 +3,18 @@ import { TaskContext } from "../Task/Context";
 import { CreepMoveAction } from "./CreepMoveAction";
 import { CreepDropAction } from "./CreepDropAction";
 
-export class CreepHarvestAction extends TaskAction {
-  private target: Source | Mineral | Deposit;
+export class CreepCollectAction extends TaskAction {
+  private target: Resource;
 
-  public constructor(target: Source | Mineral | Deposit) {
-    super([new CreepMoveAction(target.pos, 1), new CreepDropAction(RESOURCE_ENERGY)]);
+  public constructor(target: Resource) {
+    super([new CreepMoveAction(target.pos, 1)]);
     this.target = target;
   }
 
   public Execute(context: TaskContext): boolean {
     const creep = context.Get<Creep>("creep");
     const result = creep.harvest(this.target);
-    if ([ERR_NO_PATH, ERR_NOT_OWNER, ERR_NO_BODYPART, ERR_INVALID_TARGET].find(r => r === result) !== undefined) {
+    if ([ERR_NOT_OWNER, ERR_BUSY, ERR_INVALID_TARGET, ERR_NOT_IN_RANGE].find(r => r === result) !== undefined) {
       throw new Error(`CreepHarvestAction.Execute: ${result}`);
     }
     return creep.store.getFreeCapacity(RESOURCE_ENERGY) === 0;
