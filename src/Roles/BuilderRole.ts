@@ -5,6 +5,8 @@ export class BuilderRole {
   private creep: Creep;
   private requestHandler: TaskRequestHandler;
 
+  public static bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
+
   public constructor(creep: Creep) {
     this.creep = creep;
 
