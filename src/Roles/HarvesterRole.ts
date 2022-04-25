@@ -7,9 +7,10 @@ export class HarvesterRole {
 
     this.requestHandler = new RequestHandler();
 
-    const context = new TaskContext().Add<Creep>(Creep, this.creep);
+    const context: TaskContext = new TaskContext();
+    context.Add<Creep>("creep", this.creep);
 
-    const request = new TaskRequest(new CreepHarvestAction(this.findSource()), 0, true, context);
+    const request: TaskContext = new TaskRequest(new CreepHarvestAction(this.findSource()), 0, true, context);
 
     this.requestHandler.Add(request);
   }

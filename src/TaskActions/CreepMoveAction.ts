@@ -11,7 +11,7 @@ export class CreepMoveAction extends TaskAction {
   }
 
   public Execute(context: TaskContext): boolean {
-    const creep: Cr = context.Get<Creep>(Creep);
+    const creep: Creep = context.Get<Creep>("creep") as Creep;
     const result = creep.moveTo(this.position);
     if ([ERR_NO_PATH, ERR_NOT_OWNER, ERR_NO_BODYPART, ERR_INVALID_TARGET].includes(result)) {
       throw new Error(`CreepMoveAction.Execute: ${result}`);
