@@ -1,11 +1,11 @@
 export class TaskContext {
-  private context: { [key: any]: any };
+  private context: { [key: string]: any };
 
-  public get<T>(key: any): T {
-    return this.context[key];
+  public get<T>(key: string): T {
+    return this.context[key.toLowerCase()] as T;
   }
 
-  public set<T>(key: any, value: T): void {
-    this.context[key] = value;
+  public set<T>(key: string, value: T): void {
+    this.context[key.toLowerCase()] = value;
   }
 }

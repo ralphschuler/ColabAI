@@ -1,7 +1,7 @@
 export class TaskRequestHandler {
   private requests: TaskRequest[];
 
-  constructor() {
+  public constructor() {
     this.requests = [];
   }
 
