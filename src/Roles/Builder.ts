@@ -1,7 +1,5 @@
-import { TaskRequestHandler } from "../Task/RequestHandler";
-import { TaskRequest } from "../Task/Request";
-import { TaskContext } from "../Task/Context";
-import { CreepBuildAction } from "../TaskActions/CreepBuildAction";
+import { TaskContext, TaskRequest, TaskRequestHandler } from "../Task";
+import { CreepBuildAction } from "../CreepActions";
 export class BuilderRole {
   private creep: Creep;
   private requestHandler: TaskRequestHandler;

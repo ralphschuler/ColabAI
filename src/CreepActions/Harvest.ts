@@ -1,7 +1,5 @@
-import { TaskAction } from "../Task/Action";
-import { TaskContext } from "../Task/Context";
-import { CreepMoveAction } from "./CreepMoveAction";
-import { CreepDropAction } from "./CreepDropAction";
+import { TaskAction, TaskContext } from "../Task";
+import { CreepDropAction, CreepMoveAction } from "./";
 
 export class CreepHarvestAction extends TaskAction {
   private target: Source | Mineral | Deposit;

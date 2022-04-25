@@ -1,7 +1,5 @@
-import { TaskAction } from "../Task/Action";
-import { TaskContext } from "../Task/Context";
-import { CreepMoveAction } from "./CreepMoveAction";
-import { CreepCollectAction } from "./CreepCollectAction";
+import { TaskAction, TaskContext } from "../Task";
+import { CreepCollectAction, CreepMoveAction } from "./";
 
 export class CreepUpgradeAction extends TaskAction {
   private target: ConstructionSite;

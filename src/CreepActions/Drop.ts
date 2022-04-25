@@ -1,5 +1,4 @@
-import { TaskAction } from "../Task/Action";
-import { TaskContext } from "../Task/Context";
+import { TaskAction, TaskContext } from "../Task";
 
 export class CreepDropAction extends TaskAction {
   private resourceType: string;

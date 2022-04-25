@@ -1,5 +1,4 @@
-import { TaskAction } from "../Task/Action";
-import { TaskContext } from "../Task/Context";
+import { TaskAction, TaskContext } from "../Task";
 
 export class CreepMoveAction extends TaskAction {
   private position: RoomPosition;

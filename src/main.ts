@@ -1,6 +1,5 @@
 import { ErrorMapper } from "./Utils/ErrorMapper";
-import { BuilderRole } from "./Roles/BuilderRole";
-import { HarvesterRole } from "./Roles/HarvesterRole";
+import { BuilderRole, HarvesterRole, UpgraderRole } from "./Roles";
 
 declare global {
   /*
@@ -49,6 +48,10 @@ export const loop = ErrorMapper.wrapLoop(() => {
 
         case "harvester":
           new HarvesterRole(Game.creeps[name]);
+          break;
+
+        case "upgrader":
+          new UpgraderRole(Game.creeps[name]);
           break;
       }
     }

@@ -1,8 +1,5 @@
-import { TaskRequestHandler } from "../Task/RequestHandler";
-import { TaskRequest } from "../Task/Request";
-import { TaskContext } from "../Task/Context";
-
-import { CreepHarvestAction } from "../TaskActions/CreepHarvestAction";
+import { TaskContext, TaskRequest, TaskRequestHandler } from "../Task";
+import { CreepHarvestAction } from "../CreepActions";
 export class HarvesterRole {
   private creep: Creep;
   private requestHandler: TaskRequestHandler;

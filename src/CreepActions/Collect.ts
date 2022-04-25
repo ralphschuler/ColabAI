@@ -1,7 +1,5 @@
-import { TaskAction } from "../Task/Action";
-import { TaskContext } from "../Task/Context";
-import { CreepMoveAction } from "./CreepMoveAction";
-import { CreepDropAction } from "./CreepDropAction";
+import { TaskAction, TaskContext } from "../Task";
+import { CreepMoveAction } from "./";
 
 export class CreepCollectAction extends TaskAction {
   private target: Resource;
