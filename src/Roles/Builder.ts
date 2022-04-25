@@ -1,7 +1,5 @@
-import { TaskRequestHandler } from "../Task/RequestHandler";
-import { TaskRequest } from "../Task/Request";
-import { TaskContext } from "../Task/Context";
-import { CreepBuildAction } from "../TaskActions/CreepBuildAction";
+import { TaskContext, TaskRequest, TaskRequestHandler } from "../Task";
+import { CreepBuildAction } from "../CreepActions";
 export class BuilderRole {
   private creep: Creep;
   private requestHandler: TaskRequestHandler;
@@ -16,7 +14,7 @@ export class BuilderRole {
     const context: TaskContext = new TaskContext();
     context.Set<Creep>("creep", this.creep);
 
-    const request: TaskRequest = new TaskRequest(new CreepBuildAction(this.findConstructionSite()), 0, true, context);
+    const request: TaskRequest = new TaskRequest(new CreepBuildAction(context, this.findConstructionSite()), 0, true);
 
     this.requestHandler.Add(request);
   }
