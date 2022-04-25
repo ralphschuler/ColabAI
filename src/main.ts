@@ -1,7 +1,8 @@
 import { ErrorMapper } from "./Utils/ErrorMapper";
 import { BuilderRole } from "./Roles/BuilderRole";
 import { HarvesterRole } from "./Roles/HarvesterRole";
-
+import { watcher } from "./Modules/Watcher";
+import { initSentry } from "./Modules/Sentry";
 declare global {
   /*
     Example types, expand on these or remove them and add your own.
@@ -15,6 +16,10 @@ declare global {
   interface Memory {
     uuid: number;
     log: any;
+    watch: {
+      expressions: { [name: string]: string };
+      values: { [name: string]: string };
+    };
   }
 
   interface CreepMemory {
@@ -31,8 +36,7 @@ declare global {
   }
 }
 
-// When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
-// This utility uses source maps to get the line numbers and file names of the original, TS source code
+initSentry();
 export const loop = ErrorMapper.wrapLoop(() => {
   console.log(`Current game tick is ${Game.time}`);
 
@@ -53,4 +57,6 @@ export const loop = ErrorMapper.wrapLoop(() => {
       }
     }
   }
+
+  watcher();
 });
