@@ -1,9 +1,13 @@
 import { TaskRequestHandler } from "../Task/RequestHandler";
 import { TaskRequest } from "../Task/Request";
 import { TaskContext } from "../Task/Context";
+
+import { CreepHarvestAction } from "../TaskActions/CreepHarvestAction";
 export class HarvesterRole {
   private creep: Creep;
   private requestHandler: TaskRequestHandler;
+
+  public static bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
 
   public constructor(creep: Creep) {
     this.creep = creep;
@@ -11,15 +15,15 @@ export class HarvesterRole {
     this.requestHandler = new TaskRequestHandler();
 
     const context: TaskContext = new TaskContext();
-    context.Add<Creep>("creep", this.creep);
+    context.Set<Creep>("creep", this.creep);
 
-    const request: TaskContext = new TaskRequest(new CreepHarvestAction(this.findSource()), 0, true, context);
+    const request: TaskRequest = new TaskRequest(new CreepHarvestAction(this.findSource()), 0, true, context);
 
     this.requestHandler.Add(request);
   }
 
   private findSource(): Source | Mineral | Deposit {
-    const sources = this.creep.room.find(FIND_ACTIVE_SOURCES).sort((a, b) => a.energy - b.energy);
+    const sources = this.creep.room.find(FIND_SOURCES_ACTIVE).sort((a, b) => a.energy - b.energy);
     if (sources.length === 0) {
       throw new Error("HarvesterRole.findSource: no sources found");
     }

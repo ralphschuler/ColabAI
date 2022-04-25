@@ -1,4 +1,5 @@
 import { SourceMapConsumer } from "source-map";
+import * as _ from "lodash";
 
 export class ErrorMapper {
   // Cache consumer
@@ -8,10 +9,15 @@ export class ErrorMapper {
     if (this.cacheConsumer == null) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
       const sourceMap = require("index.map.js");
-      this.cacheConsumer = new SourceMapConsumer(sourceMap);
+      new SourceMapConsumer(sourceMap).then(consumer => {
+        if (!consumer) {
+          throw new Error("Failed to load source map");
+        }
+        this.cacheConsumer = consumer;
+      });
     }
 
-    return this.cacheConsumer;
+    return this.cacheConsumer as SourceMapConsumer;
   }
 
   // Cache previously mapped traces to improve performance
