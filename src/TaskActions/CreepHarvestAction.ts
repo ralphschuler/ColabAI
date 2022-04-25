@@ -3,7 +3,7 @@ import { TaskAction } from "types/TaskAction";
 export class CreepHarvestAction extends TaskAction {
   private target: Source | Mineral | Deposit;
 
-  constructor(target: Source | Mineral | Deposit) {
+  public constructor(target: Source | Mineral | Deposit) {
     super([new CreepMoveAction(target.pos, 1)]);
     this.target = target;
   }

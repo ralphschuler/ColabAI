@@ -1,4 +1,5 @@
 import { TaskAction } from "Types/TaskAction";
+import { TaskContext } from "Types/TaskContext";
 
 export enum TaskRequestStatus {
   Pending = "Pending",
@@ -14,7 +15,7 @@ export class TaskRequest {
   private context: TaskContext;
   private status: TaskRequestStatus;
 
-  constructor(task: Task, priority: number, recuring: boolean, context: TaskContext) {
+  public constructor(task: TaskAction, priority: number, recuring: boolean, context: TaskContext) {
     this.status = TaskRequestStatus.Pending;
     this.task = task;
     this.priority = priority;

@@ -8,7 +8,7 @@ export class TaskAction {
   private status: TaskActionStatus;
   private preTasks: TaskAction[];
 
-  constructor(preTasks: TaskAction[]) {
+  public constructor(preTasks: TaskAction[]) {
     this.preTasks = preTasks;
     this.status = TaskActionStatus.Pending;
   }
