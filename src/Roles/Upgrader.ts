@@ -14,7 +14,10 @@ export class UpgraderRole {
     const context: TaskContext = new TaskContext();
     context.Set<Creep>("creep", this.creep);
 
-    const request: TaskRequest = new TaskRequest(new CreepUpgradeAction(this.creep.room.controller), 0, true, context);
+    if (!this.creep.room?.controller) {
+      throw new Error("UpgraderRole.constructor: no controller found");
+    }
+    const request: TaskRequest = new TaskRequest(new CreepUpgradeAction(context, this.creep.room.controller), 0, true);
 
     this.requestHandler.Add(request);
   }

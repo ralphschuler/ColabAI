@@ -12,15 +12,13 @@ export class TaskRequest {
   private task: TaskAction;
   private priority: number;
   private recuring: boolean;
-  private context: TaskContext;
   private status: TaskRequestStatus;
 
-  public constructor(task: TaskAction, priority: number, recuring: boolean, context: TaskContext) {
+  public constructor(task: TaskAction, priority: number, recuring: boolean) {
     this.status = TaskRequestStatus.Pending;
     this.task = task;
     this.priority = priority;
     this.recuring = recuring;
-    this.context = context;
   }
 
   public get Status(): TaskRequestStatus {
@@ -33,7 +31,7 @@ export class TaskRequest {
 
   public Invoke(): TaskRequestStatus {
     try {
-      return (this.status = this.task.Invoke(this.context) ? TaskRequestStatus.Success : TaskRequestStatus.Running);
+      return (this.status = this.task.Invoke() ? TaskRequestStatus.Success : TaskRequestStatus.Running);
     } catch (e) {
       console.error(e);
       return (this.status = TaskRequestStatus.Failure);
