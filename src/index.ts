@@ -1,6 +1,6 @@
-import { initSentry } from "modules/Sentry";
+import { initSentry } from "./Modules/Sentry";
 export { loop } from "./main";
 
-(function() {
+(function () {
   initSentry();
 })();
