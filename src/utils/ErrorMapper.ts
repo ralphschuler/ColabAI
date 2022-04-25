@@ -2,14 +2,16 @@ import { SourceMapConsumer } from "source-map";
 
 export class ErrorMapper {
   // Cache consumer
-  private static _consumer?: SourceMapConsumer;
+  private static cacheConsumer?: SourceMapConsumer;
 
   public static get consumer(): SourceMapConsumer {
-    if (this._consumer == null) {
-      this._consumer = new SourceMapConsumer(require("main.js.map"));
+    if (this.cacheConsumer == null) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
+      const sourceMap = require("index.map.js");
+      this.cacheConsumer = new SourceMapConsumer(sourceMap);
     }
 
-    return this._consumer;
+    return this.cacheConsumer;
   }
 
   // Cache previously mapped traces to improve performance

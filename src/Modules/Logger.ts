@@ -1,8 +1,7 @@
 export class Logger {
-
   private static checkGroup(group: string): boolean {
     const selector = process.env.LOG_GROUP || "*";
-    return (selector === "*" || selector.indexOf(group) >= 0);
+    return selector === "*" || selector.indexOf(group) >= 0;
   }
 
   public static Log(group: string, message: string, ...args: any[]): void {
@@ -26,7 +25,7 @@ export class Logger {
   }
 
   public static Debug(group: string, message: string, ...args: any[]): void {
-    if (!Logger.checkGroup(group)) return;
+    if (!Logger.checkGroup(group)) return; // was ist mit dem taskrequesthandler? sind nur zahlen :D
     console.debug(`[${group}] ${message}`, ...args);
   }
 

@@ -7,22 +7,17 @@ export class HarvesterRole {
 
     this.requestHandler = new RequestHandler();
 
-    const context = new TaskContext()
-      .Add<Creep>(Creep, this.creep);
+    const context = new TaskContext().Add<Creep>(Creep, this.creep);
 
-    const request = new TaskRequest(
-      new CreepHarvestAction(
-        this.findSource()
-      ), 0, true, context);
+    const request = new TaskRequest(new CreepHarvestAction(this.findSource()), 0, true, context);
 
     this.requestHandler.Add(request);
   }
 
   private findSource(): Source | Mineral | Deposit {
-    const sources = this.creep.room.find(FIND_ACTIVE_SOURCES)
-      .sort((a, b) => a.energy - b.energy);
+    const sources = this.creep.room.find(FIND_ACTIVE_SOURCES).sort((a, b) => a.energy - b.energy);
     if (sources.length === 0) {
-      throw new Error('HarvesterRole.findSource: no sources found');
+      throw new Error("HarvesterRole.findSource: no sources found");
     }
     return sources[0];
   }
