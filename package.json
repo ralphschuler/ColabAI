@@ -34,7 +34,7 @@
     "node": "10.x || 12.x"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@types/chai": "^4.1.6",
     "@types/lodash": "4.14.182",
