@@ -67,7 +67,7 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "@sentry/node": "^7.11.1",
+    "@sentry/node": "^7.12.0",
     "@sentry/tracing": "^7.11.1",
     "source-map": "~0.7.4"
   }
