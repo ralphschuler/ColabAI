@@ -39,7 +39,7 @@
     "@types/chai": "^4.3.3",
     "@types/lodash": "4.14.185",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.7.21",
+    "@types/node": "^18.7.23",
     "@types/screeps": "^3.2.3",
     "@types/sinon": "^10.0.13",
     "@types/sinon-chai": "^3.2.0",
