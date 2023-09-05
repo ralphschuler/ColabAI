@@ -36,7 +36,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
-    "@types/chai": "^4.3.5",
+    "@types/chai": "^4.3.6",
     "@types/lodash": "4.14.197",
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.5.9",
