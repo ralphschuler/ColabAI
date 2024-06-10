@@ -37,7 +37,7 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/chai": "^4.3.11",
-    "@types/lodash": "4.17.4",
+    "@types/lodash": "4.17.5",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.14.2",
     "@types/screeps": "^3.3.8",
