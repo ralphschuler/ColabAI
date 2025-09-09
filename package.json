@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@sentry/node": "^10.10.0",
-    "@sentry/tracing": "^7.120.3",
+    "@sentry/tracing": "^7.120.4",
     "source-map": "~0.7.6"
   }
 }
