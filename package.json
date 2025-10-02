@@ -53,7 +53,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.5.0",
     "lodash": "^4.17.21",
-    "mocha": "^11.7.3",
+    "mocha": "^11.7.4",
     "prettier": "^3.5.3",
     "rollup": "^4.52.3",
     "rollup-plugin-clear": "^2.0.7",
