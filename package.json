@@ -43,7 +43,7 @@
     "@types/screeps": "^3.3.8",
     "@types/sinon": "^21.0.0",
     "@types/sinon-chai": "^4.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/eslint-plugin": "^8.47.0",
     "@typescript-eslint/parser": "^8.47.0",
     "@typescript-eslint/typescript-estree": "^8.46.3",
     "chai": "^6.2.1",
